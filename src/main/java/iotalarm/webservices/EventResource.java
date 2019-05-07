@@ -42,7 +42,7 @@ public String getTodaysEvents(){
 }
 
 private JsonObjectBuilder convertJson(Event e) {
-	DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");  
+	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");  
 	JsonObjectBuilder job=Json.createObjectBuilder();
 	job.add("id", e.getId());
 	job.add("title", e.getTitle());
