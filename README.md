@@ -3,7 +3,7 @@ REST-AP Service for IoT Alarm
 
 ## Endpoints
 ### Get all events
-URL: http(s)://<hostname>/api/events
+URL: http(s)://*hostname*/api/events
 ##### Description
 Returns all events in the iCal file located at the given URL in JSON format.
   
