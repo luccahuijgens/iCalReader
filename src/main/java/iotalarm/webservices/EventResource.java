@@ -22,8 +22,8 @@ private EventService service=new EventService();
 
 @GET
 @Produces("application/json")
-public String getEvents(@QueryParam("url") String url,@QueryParam("h") String params){
-	url=convertUrl(url,params);
+public String getEvents(@QueryParam("eu") String eu,@QueryParam("url") String url,@QueryParam("h") String params,@QueryParam("group") String group){
+	url=convertUrl(url,params,group,eu);
 	JsonArrayBuilder jab=Json.createArrayBuilder();
 	for (Event e:service.getEvents(url)) {
 		jab.add(convertJson(e));
@@ -34,8 +34,8 @@ public String getEvents(@QueryParam("url") String url,@QueryParam("h") String pa
 @Path("today")
 @GET
 @Produces("application/json")
-public String getTodaysEvents(@QueryParam("url") String url,@QueryParam("h") String params){
-	url=convertUrl(url,params);
+public String getTodaysEvents(@QueryParam("eu") String eu,@QueryParam("url") String url,@QueryParam("h") String params,@QueryParam("group") String group){
+	url=convertUrl(url,params,group,eu);
 	JsonArrayBuilder jab=Json.createArrayBuilder();
 	for (Event e:service.getTodaysEvents(url)) {
 		jab.add(convertJson(e));
@@ -46,8 +46,8 @@ public String getTodaysEvents(@QueryParam("url") String url,@QueryParam("h") Str
 @Path("today/first")
 @GET
 @Produces("application/json")
-public String getTodaysFirstEvent(@QueryParam("url") String url,@QueryParam("h") String params){
-	url=convertUrl(url,params);
+public String getTodaysFirstEvent(@QueryParam("eu") String eu,@QueryParam("url") String url,@QueryParam("h") String params,@QueryParam("group") String group){
+	url=convertUrl(url,params,group,eu);
 	Event todaysevent=service.getTodaysFirstEvent(url);
 	JsonObjectBuilder job=Json.createObjectBuilder();
 	if (todaysevent!=null) {
@@ -66,10 +66,17 @@ private JsonObjectBuilder convertJson(Event e) {
 	return job;
 }
 
-private String convertUrl(String base,String params) {
+private String convertUrl(String base,String params, String group,String eu) {
 	String result=base;
 	result+="&h=";
 	result+=params;
+	if (group!=null) {
+		result+="&group="+group;
+	}
+	if (eu!=null) {
+		result+="&eu="+eu;
+	}
+	System.out.println(result);
 	return result;
 }
 }
