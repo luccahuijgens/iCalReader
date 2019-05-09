@@ -17,16 +17,11 @@ public class CalendarLoader {
 	private ArrayList<Event> events=new ArrayList<Event>();
 	Calendar cal;
 
-	public CalendarLoader(String url) {
-		try {
+	public CalendarLoader(String url) throws IOException, ParserException{
 			InputStream is = new URL(url).openStream();
 		   cal = new CalendarBuilder().build(is);
 			is.close();
 			fillEvents();
-		} 
-		catch(IOException | ParserException e) {
-			e.printStackTrace();
-		}
 	}
 	
 	private boolean fillEvents() {

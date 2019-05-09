@@ -1,5 +1,6 @@
 package iotalarm.dataaccess;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -10,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 import iotalarm.domain.Event;
+import net.fortuna.ical4j.data.ParserException;
 
 public class EventReader {
 	private static EventReader instance;
@@ -27,7 +29,7 @@ public class EventReader {
 		return instance;
 	}
 	
-	public void updateUrl(String newurl) {
+	public void updateUrl(String newurl) throws IOException, ParserException {
 		if (!url.equals(newurl)) {
 			url=newurl;
 		}
