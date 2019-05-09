@@ -21,7 +21,7 @@ Returns all today's events in the iCal file located at the given URL in JSON for
 |calendarurl|*your ical file url*|
 
 ### Get today's first event
-URL: http(s)://<hostname>/api/events/first
+URL: http(s)://<hostname>/api/events/today/first
 ##### Description
 Returns the first event of today from the iCal file located at the given URL in JSON format.
   
