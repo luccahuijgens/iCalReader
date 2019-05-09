@@ -22,15 +22,16 @@ public class EventResource {
 	@Produces("application/json")
 	public String getEvents(@HeaderParam("calendarurl") String url) {
 		try {
-		JsonArrayBuilder jab = Json.createArrayBuilder();
-		for (Event e : service.getEvents(url)) {
-			jab.add(convertJson(e));
+			JsonArrayBuilder jab = Json.createArrayBuilder();
+			for (Event e : service.getEvents(url)) {
+				jab.add(convertJson(e));
+			}
+			return jab.build().toString();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return NotFoundJSON();
 		}
-		return jab.build().toString();
-		}
-	catch(Exception e) {
-		return NotFoundJSON();
-	}}
+	}
 
 	@Path("today")
 	@GET
