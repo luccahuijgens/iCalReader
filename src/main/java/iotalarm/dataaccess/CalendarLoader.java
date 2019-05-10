@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 
 import iotalarm.domain.Event;
 import net.fortuna.ical4j.data.CalendarBuilder;
@@ -30,7 +31,8 @@ public class CalendarLoader {
 	            Component.VEVENT);
 		for(int i = 0; i < calendarevents.size(); i++) {
 			VEvent event = (VEvent) calendarevents.get(i);
-			Event parsedEvent = new Event(i+1,event.getSummary().getValue(),event.getLocation().getValue(),event.getStartDate().getDate());
+			Date startDate=event.getStartDate().getDate();
+			Event parsedEvent = new Event(i+1,event.getSummary().getValue(),event.getLocation().getValue(),startDate);
 			events.add(parsedEvent);
 		}
 		return true;

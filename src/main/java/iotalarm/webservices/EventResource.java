@@ -2,6 +2,7 @@ package iotalarm.webservices;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.TimeZone;
 
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
@@ -66,6 +67,7 @@ public class EventResource {
 
 	private JsonObjectBuilder convertJson(Event e) {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+1"));
 		JsonObjectBuilder job = Json.createObjectBuilder();
 		job.add("id", e.getId());
 		job.add("title", e.getTitle());
