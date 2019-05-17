@@ -3,6 +3,7 @@ package iotalarm.dataaccess;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -17,10 +18,11 @@ import net.fortuna.ical4j.model.component.VEvent;
 public class CalendarLoader {
 	private ArrayList<Event> events=new ArrayList<Event>();
 	Calendar cal;
-
+	
 	public CalendarLoader(String url) throws IOException, ParserException{
+			CalendarBuilder builder = new CalendarBuilder();
 			InputStream is = new URL(url).openStream();
-		   cal = new CalendarBuilder().build(is);
+			cal = builder.build(is);
 			is.close();
 			fillEvents();
 	}
@@ -31,8 +33,9 @@ public class CalendarLoader {
 	            Component.VEVENT);
 		for(int i = 0; i < calendarevents.size(); i++) {
 			VEvent event = (VEvent) calendarevents.get(i);
-			Date startDate=event.getStartDate().getDate();
-			Event parsedEvent = new Event(i+1,event.getSummary().getValue(),event.getLocation().getValue(),startDate);
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd'T'HHmmss");
+			Date date = sdf.parse(event.getStartDate().getValue());
+			Event parsedEvent = new Event(i+1,event.getSummary().getValue(),event.getLocation().getValue(),date);
 			events.add(parsedEvent);
 		}
 		return true;

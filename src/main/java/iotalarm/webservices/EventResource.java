@@ -67,7 +67,6 @@ public class EventResource {
 
 	private JsonObjectBuilder convertJson(Event e) {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-		dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+1"));
 		JsonObjectBuilder job = Json.createObjectBuilder();
 		job.add("id", e.getId());
 		job.add("title", e.getTitle());
