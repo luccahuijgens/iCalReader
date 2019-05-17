@@ -2,7 +2,6 @@ package iotalarm.webservices;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.TimeZone;
 
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
@@ -23,21 +22,21 @@ public class EventResource {
 	@Produces("application/json")
 	public String getEvents(@HeaderParam("calendarurl") String url) {
 		try {
-			JsonArrayBuilder jab = Json.createArrayBuilder();
-			for (Event e : service.getEvents(url)) {
-				jab.add(convertJson(e));
-			}
-			return jab.build().toString();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return NotFoundJSON();
+		JsonArrayBuilder jab = Json.createArrayBuilder();
+		for (Event e : service.getEvents(url)) {
+			jab.add(convertJson(e));
 		}
-	}
+		return jab.build().toString();
+		}
+	catch(Exception e) {
+		return NotFoundJSON();
+	}}
 
 	@Path("today")
 	@GET
 	@Produces("application/json")
 	public String getTodaysEvents(@HeaderParam("calendarurl") String url) {
+		System.out.println(url);
 		try {
 			JsonArrayBuilder jab = Json.createArrayBuilder();
 			for (Event e : service.getTodaysEvents(url)) {
@@ -66,12 +65,11 @@ public class EventResource {
 	}
 
 	private JsonObjectBuilder convertJson(Event e) {
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		JsonObjectBuilder job = Json.createObjectBuilder();
 		job.add("id", e.getId());
 		job.add("title", e.getTitle());
 		job.add("location", e.getLocation());
-		job.add("date", dateFormat.format(e.getDate()));
+		job.add("date",e.getDate());
 		return job;
 	}
 

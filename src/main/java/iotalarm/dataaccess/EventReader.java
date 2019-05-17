@@ -51,15 +51,16 @@ public class EventReader {
 		}
 		Collections.sort(result, new Comparator<Event>() {
 			  public int compare(Event o1, Event o2) {
-			      return o1.getDate().compareTo(o2.getDate());
+			      return Long.valueOf(o1.getDate()).compareTo(Long.valueOf(o2.getDate()));
 			  }
 			});
 		return result;
 	}
 	
-	private static boolean isToday(Date eventdate) {
+	private static boolean isToday(long l) {
 LocalDate today=LocalDate.now();
-LocalDate parsedEventDate=LocalDate.of(eventdate.getYear()+1900, eventdate.getMonth()+1, eventdate.getDate());
+Date lDate = new Date(Long.parseLong(String.valueOf(l)) * 1000);
+LocalDate parsedEventDate=LocalDate.of(lDate.getYear()+1900, lDate.getMonth()+1, lDate.getDate());
 		if (parsedEventDate.isEqual(today)) {
 			return true;
 		}
