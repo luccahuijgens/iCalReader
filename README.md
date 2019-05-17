@@ -29,4 +29,16 @@ Returns the first event of today from the iCal file located at the given URL in 
 |---|---|
 |calendarurl|*your ical file url*|
 
+# Heroku
+A guide for setting up Heroku for the IoT Alarm.
+
+## Requirements: 
+A copy of this repository on a personal github account.
+
+### Step 1:
+<img src="./Resources/Sign up.png">
+
+ 
+
+
 
