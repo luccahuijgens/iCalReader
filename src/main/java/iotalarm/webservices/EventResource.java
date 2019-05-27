@@ -13,11 +13,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
 import iotalarm.domain.Event;
-import iotalarm.service.EventService;
+import iotalarm.service.CalendarService;
+import iotalarm.service.ServiceProvider;
 
 @Path("events")
 public class EventResource {
-	private EventService service = new EventService();
+	private CalendarService service = ServiceProvider.getCalendarService();
 
 	@GET
 	@Produces("application/json")
