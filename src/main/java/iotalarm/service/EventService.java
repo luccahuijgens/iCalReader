@@ -1,3 +1,7 @@
+/*
+This service class is used to get the required event data from the EventReader. 
+*/
+
 package iotalarm.service;
 
 import java.io.IOException;

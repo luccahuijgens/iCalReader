@@ -1,8 +1,11 @@
+/*
+This class is responsible for calling the CalendarLoader class with the user's schedule url, 
+sorting out the events in a order and makes a check to see if a event is today.
+*/
+
 package iotalarm.dataaccess;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -51,15 +54,16 @@ public class EventReader {
 		}
 		Collections.sort(result, new Comparator<Event>() {
 			  public int compare(Event o1, Event o2) {
-			      return o1.getDate().compareTo(o2.getDate());
+			      return Long.valueOf(o1.getDate()).compareTo(Long.valueOf(o2.getDate()));
 			  }
 			});
 		return result;
 	}
 	
-	private static boolean isToday(Date eventdate) {
-LocalDate today=LocalDate.now();
-LocalDate parsedEventDate=LocalDate.of(eventdate.getYear()+1900, eventdate.getMonth()+1, eventdate.getDate());
+private static boolean isToday(long l) {
+	LocalDate today=LocalDate.now();
+	Date lDate = new Date(Long.parseLong(String.valueOf(l)) * 1000);
+	LocalDate parsedEventDate=LocalDate.of(lDate.getYear()+1900, lDate.getMonth()+1, lDate.getDate());
 		if (parsedEventDate.isEqual(today)) {
 			return true;
 		}

@@ -1,25 +1,26 @@
-package iotalarm.domain;
+/*
+This class is responsible for storing the event. 
+*/
 
-import java.util.Date;
+package iotalarm.domain;
 
 public class Event {
 private int id;
 private String title;
 private String location;
-private Date date;
+private long unixEpoch;
 
-public Event(int id, String title, String location, Date date) {
+public Event(int id, String title, String location, long unixEpoch) {
 	super();
 	this.id = id;
 	this.title = title;
 	this.location = location;
-	this.date = date;
+	this.unixEpoch = unixEpoch; 
 }
 
 public int getId() {
 	return id;
 }
-
 public void setId(int id) {
 	this.id = id;
 }
@@ -40,14 +41,13 @@ public void setLocation(String location) {
 	this.location = location;
 }
 
-public Date getDate() {
-	return date;
+public long getDate() {
+	return unixEpoch;
 }
 
-public void setDate(Date date) {
-	this.date = date;
+public void setDate(long unixEpoch) {
+	this.unixEpoch = unixEpoch;
 }
-
 
 
 }
