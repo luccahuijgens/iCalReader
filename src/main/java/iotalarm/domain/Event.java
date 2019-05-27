@@ -1,8 +1,8 @@
+/*
+This class is responsible for storing the event. 
+*/
+
 package iotalarm.domain;
-
-import java.sql.Timestamp;
-import java.util.Date;
-
 
 public class Event {
 private int id;

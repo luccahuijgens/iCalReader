@@ -1,7 +1,8 @@
-package iotalarm.webservices;
+/*
+This class is responsible for the endpoints that are used by the clients.
+*/
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+package iotalarm.webservices;
 
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
