@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Built-By: Lucca
-Build-Jdk: 1.8.0_161
+Built-By: Robin van Vlijmen
+Build-Jdk: 1.8.0_121
 Created-By: Maven Integration for Eclipse
 
