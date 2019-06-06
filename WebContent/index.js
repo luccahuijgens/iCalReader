@@ -1,9 +1,9 @@
 $('#submitOffset').click(function(){
 	var value=document.getElementById("inputOffset").value;
 	$.ajax({
-	    type: "POST",
+	    type: "PUT",
 	    data: value,
-	    url: "restservices/offset",
+	    url: "restservices/timeoffset",
 	    success: function() {
 	    },
 	error: function(){
