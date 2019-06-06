@@ -10,33 +10,33 @@ import javax.ws.rs.Produces;
 import iotalarm.service.TestModesService;
 
 @Path("testmodes")
-	public class TestModesResource extends BasicResource{
+public class TestModesResource extends BasicResource{
 		private TestModesService service = new TestModesService();
 		
-		@GET
-		@Produces("application/json")
-		public String getTestModes() {
-			try {
-				JsonObjectBuilder job = Json.createObjectBuilder();
-				job.add("testmodes", service.getTestModes());
-				return job.build().toString();
+	@GET
+	@Produces("application/json")
+	public String getTestModes() {
+		try {
+			JsonObjectBuilder job = Json.createObjectBuilder();
+			job.add("testmodes", service.getTestModes());
+			return job.build().toString();
 			}
 		catch(Exception e) {
 			return NotFoundJSON();
-		}}
-		
-		@Path("flip")
-		@POST
-		@Produces("application/json")
-		public String setTravelTime(){
-			try {
-				service.flipTestModes();
-				JsonObjectBuilder job = Json.createObjectBuilder();
-				job.add("succes", true);
-				return job.build().toString();
+			}}
+	
+	@Path("flip")
+	@POST
+	@Produces("application/json")
+	public String setTravelTime(){
+		try {
+			service.flipTestModes();
+			JsonObjectBuilder job = Json.createObjectBuilder();
+			job.add("succes", true);
+			return job.build().toString();
 			}
-			catch (Exception e){
-				return UnknownError(e);
+		catch (Exception e){
+			return UnknownError(e);
 			}
 		}
 	}

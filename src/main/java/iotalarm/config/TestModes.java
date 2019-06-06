@@ -2,7 +2,7 @@ package iotalarm.config;
 
 public class TestModes {
 	private static TestModes instance;
-	private boolean testModes = false;
+	private static boolean testModes = false;
 	
 	private TestModes(){}
 		
@@ -20,13 +20,13 @@ public class TestModes {
         return instance;
     }
 	
-	public void setTestMode () {
-		if (this.testModes = false){
-			this.testModes = true;
+	public static void setTestMode () {
+		if (testModes = false){
+			testModes = true;
 			}
 		
-		else if (this.testModes = true) {
-			this.testModes = false;
+		else if (testModes = true) {
+			testModes = false;
 			}
 		
 		else {
@@ -35,7 +35,7 @@ public class TestModes {
 	}
 	
 	public boolean getTestModes(){
-		return this.testModes;
+		return testModes;
 	}
 	
 }
