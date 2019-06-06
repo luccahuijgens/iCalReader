@@ -19,12 +19,12 @@ public class TestReader {
 	private static String url = "";
 
 	private TestReader() {
-		list.add(new Event(1, "Test Event", "Test Locatie", getTestDate().getTime()));
+		list.add(new Event(1, "Test Event", "Test Locatie", (getTestDate().getTime())/1000));
 	}
 
 	private static void updateEvents() {
 		list = new ArrayList<>();
-		list.add(new Event(1, "Test Event", "Test Locatie", getTestDate().getTime()));
+		list.add(new Event(1, "Test Event", "Test Locatie", (getTestDate().getTime())/1000));
 	}
 
 	private static Date getTestDate() {
