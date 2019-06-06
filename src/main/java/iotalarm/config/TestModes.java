@@ -22,11 +22,11 @@ public class TestModes {
 	
 	public static void setTestMode () {
 		if (testModes == false){
-			testModes = true;
+			testModes = (!testModes);
 			}
 		
 		else if (testModes == true) {
-			testModes = false;
+			testModes = (!testModes);
 			}
 		
 		else {
