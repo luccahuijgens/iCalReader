@@ -18,7 +18,7 @@ public class TravelTimeResource extends BasicResource{
 	public String getTravelTime() {
 		try {
 			JsonObjectBuilder job = Json.createObjectBuilder();
-			job.add("traveltime", service.getTravelTime());
+			job.add("traveltime", service.getTravelTime()*60);
 			return job.build().toString();
 		}
 	catch(Exception e) {
