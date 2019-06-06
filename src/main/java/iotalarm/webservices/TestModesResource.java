@@ -4,6 +4,7 @@ import javax.json.Json;
 import javax.json.JsonObjectBuilder;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
@@ -25,7 +26,7 @@ public class TestModesResource extends BasicResource{
 			return NotFoundJSON();
 			}}
 	
-	@POST
+	@PUT
 	@Produces("application/json")
 	public String setTravelTime(){
 		try {

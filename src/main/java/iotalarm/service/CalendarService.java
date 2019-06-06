@@ -3,7 +3,6 @@ package iotalarm.service;
 import java.io.IOException;
 import java.util.List;
 
-import iotalarm.dataaccess.EventReader;
 import iotalarm.domain.Event;
 import net.fortuna.ical4j.data.ParserException;
 

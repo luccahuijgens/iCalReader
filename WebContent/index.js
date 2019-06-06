@@ -1,9 +1,9 @@
 $('#submitOffset').click(function(){
 	var value=document.getElementById("inputOffset").value;
 	$.ajax({
-	    type: "POST",
-	    data: value,
-	    url: "restservices/offset",
+	    type: "PUT",
+	    data: {traveltime:value},
+	    url: "api/timeoffset",
 	    success: function() {
 	    },
 	error: function(){
@@ -30,7 +30,7 @@ $('#testCheck').click(function() {
 	}
 	$.ajax({
 	    type: "PUT",
-	    url: "restservices/testmode",
+	    url: "api/testmode",
 	    success: function() {
 	    },
 	error: function(){

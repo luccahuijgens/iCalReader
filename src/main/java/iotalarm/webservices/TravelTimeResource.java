@@ -2,11 +2,15 @@ package iotalarm.webservices;
 
 import javax.json.Json;
 import javax.json.JsonObjectBuilder;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
 import iotalarm.service.TravelTimeService;
 
 @Path("timeoffset")
@@ -27,7 +31,7 @@ public class TravelTimeResource extends BasicResource{
 	
 	@PUT
 	@Produces("application/json")
-	public String setTravelTime(@HeaderParam("traveltime") int traveltime){
+	public String setTravelTime(@FormParam("traveltime") int traveltime){
 		try {
 			service.setTravelTime(traveltime);
 			JsonObjectBuilder job = Json.createObjectBuilder();
