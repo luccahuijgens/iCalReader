@@ -17,7 +17,7 @@ import iotalarm.service.CalendarService;
 import iotalarm.service.ServiceProvider;
 
 @Path("events")
-public class EventResource {
+public class EventResource extends BasicResource {
 	private CalendarService service = ServiceProvider.getCalendarService();
 
 	@GET
@@ -64,22 +64,6 @@ public class EventResource {
 		} catch (Exception e) {
 			return NotFoundJSON();
 		}
-	}
-
-	private JsonObjectBuilder convertJson(Event e) {
-		JsonObjectBuilder job = Json.createObjectBuilder();
-		job.add("id", e.getId());
-		job.add("title", e.getTitle());
-		job.add("location", e.getLocation());
-		job.add("date",e.getDate());
-		return job;
-	}
-
-	private String NotFoundJSON() {
-		JsonObjectBuilder job = Json.createObjectBuilder();
-		job.add("error", "Exception");
-		job.add("message", "We could not find your schedule. Maybe the url you provided is wrong.");
-		return job.build().toString();
 	}
 
 }
