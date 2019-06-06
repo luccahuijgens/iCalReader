@@ -33,6 +33,7 @@ public class TestModesResource extends BasicResource{
 			service.flipTestModes();
 			JsonObjectBuilder job = Json.createObjectBuilder();
 			job.add("succes", true);
+			job.add("result", service.getTestModes());
 			return job.build().toString();
 			}
 		catch (Exception e){

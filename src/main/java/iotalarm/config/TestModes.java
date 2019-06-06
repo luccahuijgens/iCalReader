@@ -21,11 +21,11 @@ public class TestModes {
     }
 	
 	public static void setTestMode () {
-		if (testModes = false){
+		if (testModes == false){
 			testModes = true;
 			}
 		
-		else if (testModes = true) {
+		else if (testModes == true) {
 			testModes = false;
 			}
 		
