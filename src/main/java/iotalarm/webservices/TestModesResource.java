@@ -9,7 +9,7 @@ import javax.ws.rs.Produces;
 
 import iotalarm.service.TestModesService;
 
-@Path("testmodes")
+@Path("testmode")
 public class TestModesResource extends BasicResource{
 		private TestModesService service = new TestModesService();
 		
@@ -25,7 +25,6 @@ public class TestModesResource extends BasicResource{
 			return NotFoundJSON();
 			}}
 	
-	@Path("flip")
 	@POST
 	@Produces("application/json")
 	public String setTravelTime(){

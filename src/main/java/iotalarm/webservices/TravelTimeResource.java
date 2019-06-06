@@ -9,7 +9,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import iotalarm.service.TravelTimeService;
 
-@Path("traveltime")
+@Path("timeoffset")
 public class TravelTimeResource extends BasicResource{
 	private TravelTimeService service = new TravelTimeService();
 
@@ -25,7 +25,6 @@ public class TravelTimeResource extends BasicResource{
 		return NotFoundJSON();
 	}}
 	
-	@Path("set")
 	@PUT
 	@Produces("application/json")
 	public String setTravelTime(@HeaderParam("traveltime") int traveltime){
