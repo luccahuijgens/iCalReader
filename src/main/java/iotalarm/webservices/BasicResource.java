@@ -1,3 +1,7 @@
+/* ClassTitle: BasicResource
+ * Description: This class is responsible for allowing the resource classes access to universal methods.
+ * Used in: EventResource, TestModesResource, TravelTimeResource
+ */
 package iotalarm.webservices;
 
 import javax.json.Json;
@@ -14,7 +18,11 @@ public class BasicResource {
 		return job.build().toString();
 	}
 	
-	//Returns the java error message.
+	/* FunctionTitle: UnknownError
+	 * Description: This function is responsible for returning the error message from an unknown error that occurred in the API. 
+	 * Allowing for easier bug- tracking and fixing 
+	 * Used in: TestModesResource.getTestModes(), TestModesResource.setTravelTime()
+	 */
 	protected String UnknownError(Exception e){
 		JsonObjectBuilder job = Json.createObjectBuilder();
 		job.add("error", "Exception");
