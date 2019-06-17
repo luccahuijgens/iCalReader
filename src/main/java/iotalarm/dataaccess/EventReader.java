@@ -59,9 +59,10 @@ public class EventReader {
 			});
 		return result;
 	}
-	
+
+// Compares the current system date to the event date. 
 private static boolean isToday(long l) {
-	LocalDate today=LocalDate.now();
+	LocalDate today=LocalDate.now(); 
 	Date lDate = new Date(Long.parseLong(String.valueOf(l)) * 1000);
 	LocalDate parsedEventDate=LocalDate.of(lDate.getYear()+1900, lDate.getMonth()+1, lDate.getDate());
 		if (parsedEventDate.isEqual(today)) {

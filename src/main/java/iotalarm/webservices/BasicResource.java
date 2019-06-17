@@ -7,15 +7,6 @@ import iotalarm.domain.Event;
 
 public class BasicResource {
 
-	protected JsonObjectBuilder convertJson(Event e) {
-		JsonObjectBuilder job = Json.createObjectBuilder();
-		job.add("id", e.getId());
-		job.add("title", e.getTitle());
-		job.add("location", e.getLocation());
-		job.add("date",e.getDate());
-		return job;
-	}
-
 	protected String NotFoundJSON() {
 		JsonObjectBuilder job = Json.createObjectBuilder();
 		job.add("error", "Exception");
