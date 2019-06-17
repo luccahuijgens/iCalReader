@@ -1,22 +1,22 @@
 package iotalarm.config;
 
-public class TestModes {
-	private static TestModes instance;
+public class TestMode {
+	private static TestMode instance;
 	private static boolean testModes = false;
 	
-	private TestModes(){}
+	private TestMode(){}
 		
 	static{
 		
         try{
-            instance = new TestModes();
+            instance = new TestMode();
         }
         catch(Exception e){
             throw new RuntimeException("Exception occured in creating TestModes instance");
         }
     }
 	
-	public static TestModes getInstance(){
+	public static TestMode getInstance(){
         return instance;
     }
 	

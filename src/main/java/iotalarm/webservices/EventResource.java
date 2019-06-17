@@ -1,6 +1,8 @@
-/*
-This class is responsible for the endpoints that are used by the clients.
-*/
+/* ClassTitle: EventResource
+ * Description: This class is responsible for handling requests regarding events.
+ * Its main purpose is to allow events to be retrieved from the service package/layer.
+ * Uses: BasicResource, EventResource, ServiceProvider
+ */
 
 package iotalarm.webservices;
 
@@ -16,12 +18,19 @@ import iotalarm.domain.Event;
 import iotalarm.service.CalendarService;
 import iotalarm.service.ServiceProvider;
 
+
 @Path("events")
 public class EventResource extends BasicResource {
 	private CalendarService service = ServiceProvider.getCalendarService();
 
 	@GET
 	@Produces("application/json")
+	/* FunctionTitle: getEvents
+	 * Description: This function is responsible handling requests for events based on a calendarurl.
+	 * Example: https://mijnrooster.sharepoint.hu.nl/ical?[various numbers and letters]&group=false&eu=[various numbers and letters]=&h=[various numbers and letters]=.
+	 * If this fails, it assumes the given url is faulty and returns a message requesting an correct one. 
+	 * Uses: BasicResource.NotFoundJSON, EventResource.convertJson, ServiceProvider.getEvents
+	 */
 	public String getEvents(@HeaderParam("calendarurl") String url) {
 		try {
 		JsonArrayBuilder jab = Json.createArrayBuilder();
@@ -37,8 +46,13 @@ public class EventResource extends BasicResource {
 	@Path("today")
 	@GET
 	@Produces("application/json")
+	/* FunctionTitle: getTodaysEvents
+	 * Description: This function is responsible for handling requests for the events of the current day.
+	 * Similar to the function getEvents it is based on the calendarurl (see mentioned function for a example).
+	 * If this fails, it assumes the given url is faulty and returns a message requesting an correct one.
+	 * Uses: BasicResource.NotFoundJSON, EventResource.convertJson, ServiceProvider.getTodaysEvents
+	 */
 	public String getTodaysEvents(@HeaderParam("calendarurl") String url) {
-		System.out.println(url);
 		try {
 			JsonArrayBuilder jab = Json.createArrayBuilder();
 			for (Event e : service.getTodaysEvents(url)) {
@@ -53,6 +67,12 @@ public class EventResource extends BasicResource {
 	@Path("today/first")
 	@GET
 	@Produces("application/json")
+	/* FunctionTitle: getTodaysEvents
+	 * Description: This function is responsible for handling requests for the first event of the current day.
+	 * Similar to the function getEvents it is based on the calendarurl (see mentioned function for a example).
+	 * If this fails, it assumes the given url is faulty and returns a message requesting an correct one.
+	 * Uses: BasicResource.NotFoundJSON, EventResource.convertJson, ServiceProvider.getTodaysFirstEvent
+	 */
 	public String getTodaysFirstEvent(@HeaderParam("calendarurl") String url) {
 		try {
 			Event todaysevent = service.getTodaysFirstEvent(url);
