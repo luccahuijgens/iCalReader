@@ -3,115 +3,11 @@
 <title>IoT Alarm - Home</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="w3.css">
+<link rel="stylesheet" href="w3.css"><link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="w3.css"><link rel="stylesheet" href="toggleswitch.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
 <style>
-body, html {
-  height: 100%;
-  font-family: "Inconsolata", sans-serif;
-}
 
-.bgimg {
-  background-position: center;
-  background-size: cover;
-  background-image: url("wallpaper.jpg");
-  min-height: 75%;
-}
-
-.menu {
-  display: none;
-}
-
-.jsonText{
-color:black;
-background-color:white;
-padding:16px;
-}
-.jsonText h5{
-font-weight:700;
-}
-
-* { box-sizing:border-box; }
-
-/* basic stylings ------------------------------------------ */
-body 				 { background:url(https://scotch.io/wp-content/uploads/2014/07/61.jpg); }
-.container 		{ 
-  font-family:'Roboto';
-  width:600px; 
-  margin:30px auto 0; 
-  display:block; 
-  background:#FFF;
-  padding:10px 50px 50px;
-}
-h2 		 { 
-  text-align:center; 
-  margin-bottom:50px; 
-}
-h2 small { 
-  font-weight:normal; 
-  color:#888; 
-  display:block; 
-}
-.footer 	{ text-align:center; }
-.footer a  { color:#53B2C8; }
-
-/* form starting stylings ------------------------------- */
-.group 			  { 
-  position:relative; 
-  margin-bottom:45px; 
-}
-input 				{
-  font-size:18px;
-  padding:10px 10px 10px 5px;
-  display:block;
-  width:300px;
-  border:none;
-  border-bottom:1px solid #757575;
-}
-input:focus { outline:none; }
-
-/* LABEL ======================================= */
-label 				 {
-  color:#999; 
-  font-size:18px;
-  font-weight:normal;
-  position:absolute;
-  pointer-events:none;
-  left:5px;
-  top:10px;
-  transition:0.2s ease all; 
-  -moz-transition:0.2s ease all; 
-  -webkit-transition:0.2s ease all;
-}
-
-/* active state */
-input:focus ~ label, input:valid ~ label 		{
-  top:-20px;
-  font-size:14px;
-  color:#5264AE;
-}
-
-
-/* HIGHLIGHTER ================================== */
-.{
-  -webkit-animation:inputHighlighter 0.3s ease;
-  -moz-animation:inputHighlighter 0.3s ease;
-  animation:inputHighlighter 0.3s ease;
-}
-
-/* ANIMATIONS ================ */
-@-webkit-keyframes inputHighlighter {
-	from { background:#5264AE; }
-  to 	{ width:0; background:transparent; }
-}
-@-moz-keyframes inputHighlighter {
-	from { background:#5264AE; }
-  to 	{ width:0; background:transparent; }
-}
-@keyframes inputHighlighter {
-	from { background:#5264AE; }
-  to 	{ width:0; background:transparent; }
-}
 </style>
 <body>
 
@@ -137,6 +33,23 @@ input:focus ~ label, input:valid ~ label 		{
     </div>
   </div>
 </div>
+
+<!-- Config Container -->
+<div class="w3-container" id="config">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">CUSTOMIZE THE API</span></h5>
+    <p>In this section you can enable/disable testing mode and change a personal time offset. The testing mode changes the output of the API so that it always returns a test event that is set to happen 2 minutes after the API call. 
+    This can be useful for testing the API with our own IoT alarm! The personal time offset allows you to provide a time offset to the output JSON. This can be used to make our IoT alarm make some noise in a timely manner, as an alarm that rings when the event has just started is what we call 'useless'.</p>
+  <div><div style=float:left; class="group w3-center">      
+      <input id=inputOffset type="number" required>
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>Time Offset in minutes</label>
+    </div><button id=submitOffset class="w3-center w3-block w3-padding-16" style="margin-left:32px;float:left;width:200px;background-color:grey;color:white;margin-bottom:16px;">Submit Offset</button>
+    <button id=testCheck class="w3-center w3-block w3-padding-16" style="margin-left:32px;float:left;width:200px;background-color:red;color:white;">TestMode is OFF</button>
+    </div>
+</div>
+  </div>
 
 <!-- Menu Container -->
 <div class="w3-container" id="menu">
@@ -237,22 +150,11 @@ input:focus ~ label, input:valid ~ label 		{
   <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
 </footer>
 
-<script>
-// Tabbed Menu
-function openMenu(evt, menuName) {
-  var i, x, tablinks;
-  x = document.getElementsByClassName("menu");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablink");
-  for (i = 0; i < x.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
-  }
-  document.getElementById(menuName).style.display = "block";
-  evt.currentTarget.firstElementChild.className += " w3-dark-grey";
-}
-document.getElementById("myLink").click();
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script src=index.js>
 </script>
 
 </body>
